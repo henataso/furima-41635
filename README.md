@@ -32,7 +32,7 @@ Things you may want to cover:
 | ------------------   | ------ | ----------- |
 | nickname             | string | null: false |
 | email                | string | null: false, unique: true |
-| password             | string | null: false |
+| encrypted_password   | string | null: false |
 | first_name           | string | null: false |
 | last_name            | string | null: false |
 | first_name_kana      | string | null: false |
@@ -52,7 +52,7 @@ Things you may want to cover:
 | itemtext         | text       | null: false               |
 | category_id      | integer    | null: false               |
 | condition_id     | integer    | null: false               |
-| shipping_costs_id | integer    | null: false               |
+| shipping_cost_id | integer    | null: false               |
 | region_of_origin_id| integer    | null: false               |
 | delivery_time_id  | integer    | null: false               |
 | price            | integer    | null: false               |
@@ -61,8 +61,7 @@ Things you may want to cover:
 ### Association
 
 - belongs_to :user
-- has_many :orders
-- has_one :addresse
+- has_one :order
 
 ## orders テーブル
 
@@ -75,26 +74,19 @@ Things you may want to cover:
 
 - belongs_to :user
 - belongs_to :item
-- has_one :addresse
+- has_one :address
 
 ## addresses テーブル
 
 | Column             | Type       | Options                 |
 | -------            | ---------- | ----------------------- |
-| card information   | integer    | null: false             |
-| expiration_date     | string     | null: false             |
-| security_code       | integer    | null: false             |
 | zip                | string     | null: false             |
-| prefecture_Required | string     | null: false             |
-| city_town           | string     | null: false             |
+| region_of_origin_id| string     | null: false             |
+| city_town          | string     | null: false             |
 | street             | string     | null: false             |
 | name               | string     | null: false             |
-| phone              | integer    | null: false             |
-| item     | references | null: false, foreign_key: true |
-| user     | references | null: false, foreign_key: true |
+| phone              | string     | null: false             |
 
 ### Association
 
-- belongs_to :user
-- belongs_to :item
 - belongs_to :order
