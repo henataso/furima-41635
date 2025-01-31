@@ -84,8 +84,9 @@ Things you may want to cover:
 | region_of_origin_id| string     | null: false             |
 | city_town          | string     | null: false             |
 | street             | string     | null: false             |
-| name               | string     | null: false             |
+| building_name      | string     | null: false             |
 | phone              | string     | null: false             |
+| order       | references | null: false, foreign_key: true |
 
 ### Association
 
