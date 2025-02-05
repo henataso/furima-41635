@@ -76,4 +76,8 @@ group :production do
   gem 'pg'
 end
 
+ユーザー管理機能
 gem 'devise'
+
+gem 'active_hash'
+main

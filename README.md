@@ -23,6 +23,7 @@ Things you may want to cover:
 
 * ...
 
+ユーザー管理機能
 # README
 
 This README would normally document whatever steps are necessary to get the
@@ -48,6 +49,7 @@ Things you may want to cover:
 
 * ...
 
+main
 
 # テーブル設計
 
