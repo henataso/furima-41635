@@ -13,6 +13,8 @@ class User < ApplicationRecord
 
   VALID_PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i
   validates :password, format: { with: VALID_PASSWORD_REGEX, message: 'は半角英数字混合で入力してください' }
-  validates :first_name_kana, :last_name_kana, format: { with: /\A[ぁ-んァ-ン一-龥]+\z/, message: 'は全角（漢字・ひらがな・カタカナ）で入力してください' }
-  validates :name_kana, format: { with: /\A[\p{katakana}ー－]+\z/, message: 'は全角カタカナで入力してください' }
+  validates :first_name, presence: true, format: { with: /\A[ぁ-んァ-ヶ一-龥々]+\z/, message: 'は全角（漢字・ひらがな・カタカナ）で入力してください' }
+  validates :last_name, presence: true, format: { with: /\A[ぁ-んァ-ヶ一-龥々]+\z/, message: 'は全角（漢字・ひらがな・カタカナ）で入力してください' }
+  validates :first_name_kana, format: { with: /\A[\p{katakana}ー－]+\z/, message: 'は全角カタカナで入力してください' }
+  validates :last_name_kana, format: { with: /\A[\p{katakana}ー－]+\z/, message: 'は全角カタカナで入力してください' }
 end
