@@ -10,6 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+商品出品機能
 ActiveRecord::Schema[7.1].define(version: 2025_02_08_031654) do
   create_table "items", charset: "utf8mb3", force: :cascade do |t|
     t.string "itemname", null: false
@@ -25,6 +26,8 @@ ActiveRecord::Schema[7.1].define(version: 2025_02_08_031654) do
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_items_on_user_id"
   end
+
+ActiveRecord::Schema[7.1].define(version: 2025_02_02_024451) do
 
   create_table "users", charset: "utf8mb3", force: :cascade do |t|
     t.string "nickname", default: "", null: false
@@ -44,5 +47,6 @@ ActiveRecord::Schema[7.1].define(version: 2025_02_08_031654) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+ 商品出品機能
   add_foreign_key "items", "users"
 end
