@@ -114,6 +114,7 @@ GEM
       responders
       warden (~> 1.2.3)
     diff-lcs (1.5.1)
+    
     drb (2.2.1)
     erubi (1.13.1)
     factory_bot (6.5.0)
@@ -319,8 +320,10 @@ DEPENDENCIES
   capybara
   debug
   devise
+商品出品機能
   factory_bot_rails
   faker
+  
   importmap-rails
   jbuilder
   mysql2 (~> 0.5)
