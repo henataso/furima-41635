@@ -21,11 +21,7 @@ class Item < ApplicationRecord
   validates :price, presence: true,
                     numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999 }
   validate :price_must_be_half_width
-  validates :image, presence: true, unless: :was_attached?
-
-  def was_attached?
-    image.attached?
-  end
+  validate :image_presence
 
   private
 
@@ -33,5 +29,9 @@ class Item < ApplicationRecord
     return unless price.present? && (price.to_s =~ /[０-９]/)
 
     errors.add(:price, 'must be half-width digits')
+  end
+
+  def image_presence
+    errors.add(:image, 'must be attached') unless image.attached?
   end
 end

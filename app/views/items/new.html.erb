@@ -7,9 +7,9 @@
   </header>
   <div class="items-sell-main">
     <h2 class="items-sell-title">商品の情報を入力</h2>
-    <%= form_with(model: @item, local: true) do |f| %>
+    <%= form_with model: @item, local: true do |f| %>
 
-      <%= render 'shared/error_messages', model: @item %>
+    <%= render "shared/error_messages" %>
 
     <%# 商品画像 %>
     <div class="img-upload">
@@ -31,7 +31,7 @@
         商品名
         <span class="indispensable">必須</span>
       </div>
-      <%= f.text_area :itemname, class:"items-text", id:"item-name", placeholder:"商品名（必須 40文字まで)", maxlength:"40" %>
+      <%= f.text_field :itemname, required: true, class:"items-text" %>
       <div class="items-explain">
         <div class="weight-bold-text">
           商品の説明
@@ -99,7 +99,7 @@
             <span class="indispensable">必須</span>
           </div>
           <span class="sell-yen">¥</span>
-          <%= f.text_field :price, class:"price-input", id:"item-price", placeholder:"例）300" %>
+          <%= f.text_field :price, required: true, class:"price-input" %>
         </div>
         <div class="price-content">
           <span>販売手数料 (10%)</span>
@@ -138,13 +138,13 @@
     <%# /注意書き %>
     <%# 下部ボタン %>
     <div class="sell-btn-contents">
-      <%= f.submit "出品する" ,class:"sell-btn", disabled: true %>
+      <%= f.submit "出品する" ,class:"sell-btn" %>
       <%=link_to 'もどる', root_path, class:"back-btn" %>
     </div>
     <%# /下部ボタン %>
   </div>
   <% end %>
-
+  
   <footer class="items-sell-footer">
     <ul class="menu">
       <li><a href="#">プライバシーポリシー</a></li>
