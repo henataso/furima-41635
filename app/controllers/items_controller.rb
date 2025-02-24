@@ -1,27 +1,17 @@
 class ItemsController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :create]
   def index
   end
 
   def new
     @item = Item.new
-    @user = current_user
-    @categories = Category.all.map { |c| [c.name, c.id] }
-    @conditions = Condition.all.map { |c| [c.name, c.id] }
-    @shipping_costs = ShippingCost.all.map { |c| [c.name, c.id] }
-    @regions = Region.all.map { |c| [c.name, c.id] }
-    @delivery_times = DeliveryTime.all.map { |c| [c.name, c.id] }
   end
 
   def create
     @item = Item.new(item_params)
     if @item.save
-      redirect_to @item, notice: 'Item was successfully created.'
+      redirect_to root_path, notice: 'Item was successfully created.'
     else
-      @categories = Category.all.map { |c| [c.name, c.id] }
-      @conditions = Condition.all.map { |c| [c.name, c.id] }
-      @shipping_costs = ShippingCost.all.map { |c| [c.name, c.id] }
-      @regions = Region.all.map { |c| [c.name, c.id] }
-      @delivery_times = DeliveryTime.all.map { |c| [c.name, c.id] }
       render :new, status: :unprocessable_entity
     end
   end
@@ -30,6 +20,6 @@ class ItemsController < ApplicationController
 
   def item_params
     params.require(:item).permit(:itemname, :price, :category_id, :condition_id, :image, :itemtext, :shipping_cost_id,
-                                 :region_of_origin_id, :delivery_time_id)
+                                 :region_of_origin_id, :delivery_time_id).marge(user: current_user)
   end
 end

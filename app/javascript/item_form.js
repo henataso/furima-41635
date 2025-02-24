@@ -50,7 +50,3 @@ document.addEventListener('DOMContentLoaded', function() {
     console.error('フォームまたは出品ボタンの要素が見つかりません。');
   }
 });
-
-window.addEventListener('turbo:load', () => {
-  console.log("OK");
-});

@@ -13,11 +13,11 @@ class Item < ApplicationRecord
 
   validates :itemname, presence: true
   validates :itemtext, presence: true, length: { maximum: 1000 }
-  validates :category_id, presence: true, numericality: { other_than: 1, message: "can't be blank" }
-  validates :condition_id, presence: true, numericality: { other_than: 1, message: "can't be blank" }
-  validates :shipping_cost_id, presence: true, numericality: { other_than: 1, message: "can't be blank" }
-  validates :region_of_origin_id, presence: true, numericality: { other_than: 1, message: "can't be blank" }
-  validates :delivery_time_id, presence: true, numericality: { other_than: 1, message: "can't be blank" }
+  validates :category_id, presence: true, numericality: { other_than: 1, message: "can't be ---" }
+  validates :condition_id, presence: true, numericality: { other_than: 1, message: "can't be ---" }
+  validates :shipping_cost_id, presence: true, numericality: { other_than: 1, message: "can't be ---" }
+  validates :region_of_origin_id, presence: true, numericality: { other_than: 1, message: "can't be ---" }
+  validates :delivery_time_id, presence: true, numericality: { other_than: 1, message: "can't be ---" }
   validates :price, presence: true,
                     numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999 }
   validate :price_must_be_half_width
