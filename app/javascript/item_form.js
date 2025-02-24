@@ -1,5 +1,5 @@
-document.addEventListener('DOMContentLoaded', setupPriceListener);
-document.addEventListener('turbolinks:load', setupPriceListener);
+window.addEventListener("turbo:load", setupPriceListener);
+window.addEventListener("turbo:render", setupPriceListener);
 
 function setupPriceListener() {
   const priceInput = document.getElementById('item-price');
