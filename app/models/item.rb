@@ -23,6 +23,10 @@ class Item < ApplicationRecord
   validate :price_must_be_half_width
   validate :image_presence
 
+  def sold_out?
+    sold_at.present?
+  end
+
   private
 
   def price_must_be_half_width
