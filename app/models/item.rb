@@ -4,7 +4,7 @@ class Item < ApplicationRecord
   belongs_to_active_hash :category
   belongs_to_active_hash :condition
   belongs_to_active_hash :shipping_cost, class_name: 'ShippingCost'
-  belongs_to_active_hash :region, class_name: 'Region'
+  belongs_to_active_hash :region, foreign_key: 'region_of_origin_id', class_name: 'Region'
   belongs_to_active_hash :delivery_time, class_name: 'DeliveryTime'
 
   belongs_to :user
