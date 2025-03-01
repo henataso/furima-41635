@@ -20,6 +20,7 @@ class Item < ApplicationRecord
   validates :delivery_time_id, presence: true, numericality: { other_than: 1, message: "can't be ---" }
   validates :price, presence: true,
                     numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999 }
+  validates :user, presence: true
   validate :price_must_be_half_width
   validate :image_presence
 
