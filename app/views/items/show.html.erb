@@ -23,6 +23,7 @@
       </span>
     </div>
 
+商品詳細表示機能
   
     <% if user_signed_in? %>
     <% if @item.user_id == current_user.id %>
@@ -38,6 +39,20 @@
     <% end %>
     <% end %>
     <% end %>
+
+    <%# if @item.user == current_user && !@item.sold_out?%>
+
+    <%= link_to "商品の編集", "#", method: :get, class: "item-red-btn" %>
+    <p class="or-text">or</p>
+    <%= link_to "削除", "#", data: {turbo_method: :delete}, class:"item-destroy" %>
+    <%# elsif !@item.sold_out? %>
+    
+    <%= link_to "購入画面に進む","#",class:"item-red-btn"%>
+
+   <%# end %>
+
+    <%# //ログインしているユーザーと出品しているユーザーが、同一人物の場合と同一人物ではない場合で、処理を分けましょう %>
+main
 
     <div class="item-explain-box">
       <span><%= "商品説明" %></span>
