@@ -4,7 +4,7 @@ class Item < ApplicationRecord
   belongs_to_active_hash :category
   belongs_to_active_hash :condition
   belongs_to_active_hash :shipping_cost, class_name: 'ShippingCost'
-  belongs_to_active_hash :region, class_name: 'Region'
+  belongs_to_active_hash :region, foreign_key: 'region_of_origin_id', class_name: 'Region'
   belongs_to_active_hash :delivery_time, class_name: 'DeliveryTime'
 
   belongs_to :user
@@ -20,6 +20,7 @@ class Item < ApplicationRecord
   validates :delivery_time_id, presence: true, numericality: { other_than: 1, message: "can't be ---" }
   validates :price, presence: true,
                     numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999 }
+  validates :user, presence: true
   validate :price_must_be_half_width
   validate :image_presence
 
