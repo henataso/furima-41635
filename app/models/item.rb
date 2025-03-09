@@ -8,6 +8,7 @@ class Item < ApplicationRecord
   belongs_to_active_hash :delivery_time, class_name: 'DeliveryTime'
 
   belongs_to :user
+  has_one :address
 
   has_one_attached :image
 

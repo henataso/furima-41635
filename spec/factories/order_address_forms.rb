@@ -1,5 +1,5 @@
 FactoryBot.define do
-  factory :card do
+  factory :order_address_form do
     
   end
 end
