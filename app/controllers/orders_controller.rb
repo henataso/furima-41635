@@ -2,6 +2,7 @@ class OrdersController < ApplicationController
   before_action :authenticate_user!
   before_action :set_item, only: [:index, :create]
   before_action :redirect_if_seller, only: [:index, :create]
+  before_action :check_item_sold_out, only: [:index, :create]
 
   def index
     gon.public_key = ENV['PAYJP_PUBLIC_KEY']
@@ -17,6 +18,7 @@ class OrdersController < ApplicationController
       redirect_to root_path
     else
       @errors = @order_address.errors.full_messages
+      gon.public_key = ENV['PAYJP_PUBLIC_KEY']
       render :index
     end
   end
@@ -46,5 +48,11 @@ class OrdersController < ApplicationController
       card: @order_address.token, # カードトークン
       currency: 'jpy' # 通貨の種類（日本円）
     )
+  end
+
+  def check_item_sold_out
+    return unless @item.sold_out? && @item.user != current_user
+
+    redirect_to root_path, alert: 'この商品は既に売却されています。'
   end
 end
