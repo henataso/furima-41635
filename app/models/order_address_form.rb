@@ -5,9 +5,9 @@ class OrderAddressForm
 
   with_options presence: true do
     validates :user_id, :item_id, :city, :house_number, :token
-    validates :postal_code, presence: true, format: { with: /\A\d{3}-\d{4}\z/, message: 'はハイフンを含む形式で入力してください' }
-    validates :tell, presence: true, format: { with: /\A\d{10,11}\z/, message: 'は10桁以上11桁以内の半角数値で入力してください' }
-    validates :region_of_origin_id, presence: true, numericality: { other_than: 1, message: "can't be ---" }
+    validates :postal_code, format: { with: /\A\d{3}-\d{4}\z/, message: 'はハイフンを含む形式で入力してください' }
+    validates :tell, format: { with: /\A\d{10,11}\z/, message: 'は10桁以上11桁以内の半角数値で入力してください' }
+    validates :region_of_origin_id, numericality: { other_than: 1, message: "can't be ---" }
   end
 
   def save
