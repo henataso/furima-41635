@@ -11,7 +11,6 @@ class OrdersController < ApplicationController
 
   def create
     @order_address = OrderAddressForm.new(order_address_params)
-    @order_address.price = @item.price
     if @order_address.valid?
       pay_item
       @order_address.save
@@ -51,8 +50,6 @@ class OrdersController < ApplicationController
   end
 
   def check_item_sold_out
-    return unless @item.sold_out? && @item.user != current_user
-
     redirect_to root_path, alert: 'この商品は既に売却されています。'
   end
 end
