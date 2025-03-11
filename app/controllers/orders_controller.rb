@@ -5,7 +5,7 @@ class OrdersController < ApplicationController
   before_action :check_item_sold_out, only: [:index, :create]
 
   def index
-    gon.public_key = ENV['PAYJP_PUBLIC_KEY']
+    gon.public_key = ENV.fetch('PAYJP_PUBLIC_KEY', nil)
     @order_address = OrderAddressForm.new
   end
 
@@ -17,7 +17,7 @@ class OrdersController < ApplicationController
       redirect_to root_path
     else
       @errors = @order_address.errors.full_messages
-      gon.public_key = ENV['PAYJP_PUBLIC_KEY']
+      gon.public_key = ENV.fetch('PAYJP_PUBLIC_KEY', nil)
       render :index
     end
   end
@@ -41,7 +41,7 @@ class OrdersController < ApplicationController
   end
 
   def pay_item
-    Payjp.api_key = ENV['PAYJP_SECRET_KEY'] # 自身のPAY.JPテスト秘密鍵を記述しましょう
+    Payjp.api_key = ENV.fetch('PAYJP_SECRET_KEY', nil) # 自身のPAY.JPテスト秘密鍵を記述しましょう
     Payjp::Charge.create(
       amount: @order_address.price, # 商品の値段
       card: @order_address.token, # カードトークン

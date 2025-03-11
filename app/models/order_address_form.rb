@@ -12,7 +12,14 @@ class OrderAddressForm
 
   def save
     order = Order.create(user_id: user_id, item_id: item_id)
-    Address.create(order_id: order.id, postal_code: postal_code, region_of_origin_id: region_of_origin_id, city: city, house_number: house_number,
-                   building_name: building_name, tell: tell)
+    Address.create(
+      order_id: order.id,
+      postal_code: postal_code,
+      region_of_origin_id: region_of_origin_id,
+      city: city,
+      house_number: house_number,
+      building_name: building_name,
+      tell: tell
+    )
   end
 end
