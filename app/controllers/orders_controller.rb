@@ -31,7 +31,7 @@ class OrdersController < ApplicationController
 
   def order_address_params
     permitted_params = params.require(:order_address_form).permit(:postal_code, :region_of_origin_id, :city, :house_number,
-                                                                  :building_name, :tell, :price, :token)
+                                                                  :building_name, :tell, :token)
     permitted_params.merge(user_id: current_user.id, item_id: params[:item_id])
   end
 
