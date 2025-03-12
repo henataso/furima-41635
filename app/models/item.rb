@@ -8,6 +8,7 @@ class Item < ApplicationRecord
   belongs_to_active_hash :delivery_time, class_name: 'DeliveryTime'
 
   belongs_to :user
+  has_one :order
 
   has_one_attached :image
 
@@ -23,6 +24,10 @@ class Item < ApplicationRecord
   validates :user, presence: true
   validate :price_must_be_half_width
   validate :image_presence
+
+  def sold_out?
+    order.present?
+  end
 
   private
 

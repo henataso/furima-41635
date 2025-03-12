@@ -70,7 +70,7 @@ group :test do
 end
 
 group :development do
-  gem 'rubocop', require: false
+  gem 'rubocop','1.71.2', require: false
 end
 
 group :production do
@@ -82,3 +82,6 @@ gem 'active_hash'
 gem 'faker'
 gem 'mini_magick'
 gem 'image_processing', '~> 1.2'
+gem 'pry-rails'
+gem 'payjp'
+gem 'gon'
