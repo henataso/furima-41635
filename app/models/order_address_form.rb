@@ -22,4 +22,12 @@ class OrderAddressForm
       tell: tell
     )
   end
+
+  def item
+    Item.find(item_id)
+  end
+
+  def price
+    item.price
+  end
 end
