@@ -56,6 +56,12 @@ RSpec.describe OrderAddressForm, type: :model do
         expect(@order_address_form.errors.full_messages).to include("Region of origin can't be blank")
       end
 
+      it 'region_of_origin_idに「---」が選択されている場合は出品できない' do
+        @order_address_form.region_of_origin_id = 1
+        @order_address_form.valid?
+        expect(@order_address_form.errors.full_messages).to include("Region of origin can't be ---")
+      end
+
       it 'cityが空では購入できないこと' do
         @order_address_form.city = ''
         @order_address_form.valid?

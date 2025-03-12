@@ -50,6 +50,8 @@ class OrdersController < ApplicationController
   end
 
   def check_item_sold_out
+    return unless @item.sold_out?
+
     redirect_to root_path, alert: 'この商品は既に売却されています。'
   end
 end
