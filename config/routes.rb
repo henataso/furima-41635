@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
  root to: "items#index"
+ get 'assets/item_form', to: 'items#item_form'
  resources :items do
    resources :orders, only: [:index, :new, :create]
  end
