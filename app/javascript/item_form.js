@@ -1,7 +1,5 @@
-window.addEventListener("turbo:load", setupPriceListener);
-window.addEventListener("turbo:render", setupPriceListener);
+const setupPriceListener = () => {
 
-function setupPriceListener() {
   const priceInput = document.getElementById('price-input');
   const taxPriceField = document.getElementById('add-tax-price');
   const profitField = document.getElementById('profit');
@@ -26,3 +24,6 @@ function setupPriceListener() {
     console.error('必要な要素が見つかりません。');
   }
 }
+
+window.addEventListener("turbo:load", setupPriceListener);
+window.addEventListener("turbo:render", setupPriceListener);
