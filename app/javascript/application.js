@@ -3,3 +3,6 @@ import "@hotwired/turbo-rails"
 import "controllers"
 import "item"
 import "card"
+import Rails from "@rails/ujs"
+
+Rails.start()
