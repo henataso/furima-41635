@@ -2,9 +2,9 @@ window.addEventListener("turbo:load", setupPriceListener);
 window.addEventListener("turbo:render", setupPriceListener);
 
 function setupPriceListener() {
-  const priceInput = document.getElementById('number-form');
-  const taxPriceField = document.getElementById('expiry-form');
-  const profitField = document.getElementById('cvc-form');
+  const priceInput = document.getElementById('price-input');
+  const taxPriceField = document.getElementById('add-tax-price');
+  const profitField = document.getElementById('profit');
 
   if (priceInput && taxPriceField && profitField) {
     priceInput.addEventListener('input', function() {
